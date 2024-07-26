@@ -165,7 +165,7 @@ _HttpDefaultCallback、HttpCacheCallback构造可传入Looper来指定回调线�
 
 #### 取消请求
 ```java
-      HttpRequest.cancel(TAG);
+      HttpEasyRequest.cancel(TAG);
 ```
 ### 下载
 #### 单文件下载
