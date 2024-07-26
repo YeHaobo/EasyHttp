@@ -1,0 +1,39 @@
+apply plugin: 'com.android.library'
+apply plugin: 'maven-publish'
+
+android {
+
+    compileSdkVersion 28
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 28
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+
+}
+
+dependencies {
+    compileOnly 'com.squareup.okhttp3:okhttp:3.10.0'//OkHttp3
+    compileOnly 'com.zhy:okhttputils:2.6.2'//OkHttp3Utils
+    compileOnly 'com.alibaba:fastjson:1.2.56'//fastjson
+}
+
+//JitPack编译打包配置
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                groupId = 'com.github.YeHaobo'
+                artifactId = 'httputils'
+            }
+        }
+    }
+}

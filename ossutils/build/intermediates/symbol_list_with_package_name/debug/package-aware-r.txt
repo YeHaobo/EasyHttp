@@ -1,0 +1,2 @@
+com.yhb.ossutils
+string app_name

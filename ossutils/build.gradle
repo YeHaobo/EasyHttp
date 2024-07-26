@@ -1,0 +1,38 @@
+apply plugin: 'com.android.library'
+apply plugin: 'maven-publish'
+
+android {
+
+    compileSdkVersion 28
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 28
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+
+}
+
+dependencies {
+    compileOnly 'com.aliyun.dpa:oss-android-sdk:2.9.13'//阿里云OSS
+    compileOnly 'com.alibaba:fastjson:1.2.56'//fastjson
+}
+
+//JitPack编译打包配置
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                groupId = 'com.github.YeHaobo'
+                artifactId = 'ossutils'
+            }
+        }
+    }
+}

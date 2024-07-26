@@ -1,0 +1,37 @@
+apply plugin: 'com.android.application'
+
+android {
+
+    compileSdkVersion 28
+
+    defaultConfig {
+        applicationId "com.yhb.test"
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+}
+
+dependencies {
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation project(path: ':httputils')
+    implementation project(path: ':ossutils')
+    implementation 'com.squareup.okhttp3:okhttp:3.10.0'//OkHttp3
+    implementation 'com.zhy:okhttputils:2.6.2'//OkHttp3Utils
+    implementation 'com.alibaba:fastjson:1.2.56'//fastjson
+    implementation 'com.aliyun.dpa:oss-android-sdk:2.9.13'//阿里云OSS
+}

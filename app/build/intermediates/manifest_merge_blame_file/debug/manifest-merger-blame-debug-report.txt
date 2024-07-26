@@ -1,0 +1,73 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.yhb.test"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+8-->D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="28" />
+9-->D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.INTERNET" /> <!-- 允许应用访问网络连接 -->
+11-->D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml:5:5-66
+11-->D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml:5:22-64
+12    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 允许应用获取网络信息状态 -->
+12-->D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml:6:5-78
+12-->D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml:6:22-76
+13    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 允许应用获取当前WiFi接入的状态以及WLAN热点的信息 -->
+13-->D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml:7:5-75
+13-->D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml:7:22-73
+14    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" /> <!-- 允许应用更改网络连接状态 -->
+14-->D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml:8:5-79
+14-->D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml:8:22-76
+15    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" /> <!-- 允许应用更改Wi-Fi连接状态 -->
+15-->D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml:9:5-76
+15-->D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml:9:22-73
+16    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- 允许应用读取扩展存储 -->
+16-->D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml:10:5-80
+16-->D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml:10:22-77
+17    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 允许应用写入扩展存储 -->
+17-->D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml:11:5-81
+17-->D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml:11:22-78
+18    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+18-->D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml:12:5-82
+18-->D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml:12:22-79
+19
+20    <!-- 允许访问所有文件 -->
+21    <application
+21-->D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml:14:5-29:19
+22        android:allowBackup="true"
+22-->D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml:15:9-35
+23        android:appComponentFactory="android.support.v4.app.CoreComponentFactory"
+23-->[com.android.support:support-compat:28.0.0] C:\Users\CompassUser\.gradle\caches\transforms-2\files-2.1\0b9593fbb2dcde7397582f8d667e1ce4\support-compat-28.0.0\AndroidManifest.xml:22:18-91
+24        android:debuggable="true"
+25        android:icon="@mipmap/ic_launcher"
+25-->D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml:16:9-43
+26        android:label="@string/app_name"
+26-->D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml:17:9-41
+27        android:roundIcon="@mipmap/ic_launcher_round"
+27-->D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml:18:9-54
+28        android:supportsRtl="true"
+28-->D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml:19:9-35
+29        android:testOnly="true"
+30        android:theme="@style/AppTheme" >
+30-->D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml:20:9-40
+31        <activity android:name="com.yhb.test.MainActivity" >
+31-->D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml:22:9-27:20
+31-->D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml:22:19-47
+32            <intent-filter>
+32-->D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml:23:13-26:29
+33                <action android:name="android.intent.action.MAIN" />
+33-->D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml:24:17-69
+33-->D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml:24:25-66
+34
+35                <category android:name="android.intent.category.LAUNCHER" />
+35-->D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml:25:17-77
+35-->D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml:25:27-74
+36            </intent-filter>
+37        </activity>
+38    </application>
+39
+40</manifest>
