@@ -22,11 +22,14 @@ import com.yhb.ossutils.OssManager;
 import com.yhb.ossutils.upload.OssUploader;
 import com.yhb.ossutils.upload.OssUploaderResult;
 import com.yhb.ossutils.upload.multiple.OssMultipleUploaderCallback;
+import com.yhb.ossutils.upload.single.OssSingleUploaderCallback;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -51,22 +54,51 @@ public class MainActivity extends AppCompatActivity {
         handler.post(new Runnable() {
             @Override
             public void run() {
-                Log.e(TAG, Thread.currentThread().getName() + "  " + Thread.currentThread().getId());
                 Map<String, String> map = new HashMap<>();
                 map.put("mac", MyDefaultOssConfig.mac());
+
+                Log.e(TAG, Thread.currentThread().getName() + "  " + Thread.currentThread().getId());
+
+//                try {
+//                    Response response = HttpRequest
+//                            .get()
+//                            .tag(TAG)
+//                            .url("https://pm.aiyi.tv:9010/ayqhl-operation/themeAuditDeviceRel/getThemeByDevice")
+//                            .params(map)
+//                            .build()
+//                            .execute();
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+
                 HttpRequest
                         .get()
                         .tag(TAG)
                         .url("https://pm.aiyi.tv:9010/ayqhl-operation/themeAuditDeviceRel/getThemeByDevice")
                         .params(map)
                         .build()
-                        .execute(new HttpCacheCallback<String>(Looper.getMainLooper(), String.class) {
+                        .execute(new HttpDefaultCallback<String>(Looper.getMainLooper(), String.class) {
                             @Override
-                            public void callback(boolean result, String data, String requestMsg, String cacheMsg) {
+                            public void callback(boolean result, String data, String msg) {
                                 Log.e(TAG, Thread.currentThread().getName() + "  " + Thread.currentThread().getId());
-                                Log.e(TAG, result + "\n" + data + "\n" + requestMsg + "\n" + cacheMsg);
+                                Log.e(TAG, result + "\n" + data + "\n" + msg);
                             }
                         });
+
+//                HttpRequest
+//                        .get()
+//                        .tag(TAG)
+//                        .url("https://pm.aiyi.tv:9010/ayqhl-operation/themeAuditDeviceRel/getThemeByDevice")
+//                        .params(map)
+//                        .build()
+//                        .execute(new HttpCacheCallback<String>(Looper.getMainLooper(), String.class) {
+//                            @Override
+//                            public void callback(boolean result, String data, String requestMsg, String cacheMsg) {
+//                                Log.e(TAG, Thread.currentThread().getName() + "  " + Thread.currentThread().getId());
+//                                Log.e(TAG, result + "\n" + data + "\n" + requestMsg + "\n" + cacheMsg);
+//                            }
+//                        });
+
             }
         });
     }
@@ -175,6 +207,7 @@ public class MainActivity extends AppCompatActivity {
                 fileList.add(new File(Environment.getExternalStorageDirectory().getPath() + "/test/11/333.jpg"));
 
                 Log.e(TAG, Thread.currentThread().getName() + "  " + Thread.currentThread().getId());
+
 //                OssUploaderResult result = OssUploader.createSingle().sync(fileList.get(0));
 //                Log.e(TAG, Thread.currentThread().getName() + "  " + Thread.currentThread().getId());
 //                Log.e(TAG, result.toString());
