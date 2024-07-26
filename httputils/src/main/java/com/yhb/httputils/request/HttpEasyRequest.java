@@ -9,7 +9,7 @@ import com.zhy.http.okhttp.builder.PostFormBuilder;
 import com.zhy.http.okhttp.builder.PostStringBuilder;
 
 /**http请求*/
-public class HttpRequest {
+public class HttpEasyRequest {
 
     /**get*/
     public static GetBuilder get(){

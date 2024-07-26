@@ -3,7 +3,7 @@ package com.yhb.httputils.download.single;
 import com.yhb.httputils.HttpManager;
 import com.yhb.httputils.download.HttpDownloader;
 import com.yhb.httputils.download.HttpDownloadResult;
-import com.yhb.httputils.request.HttpRequest;
+import com.yhb.httputils.request.HttpEasyRequest;
 import com.zhy.http.okhttp.callback.FileCallBack;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -58,7 +58,7 @@ public class HttpSingleDownloader extends HttpDownloader {
             rFile.delete();
         }
         try{
-            Response response = HttpRequest.get().tag(HttpSingleDownloader.this).url(url).build().execute();//请求
+            Response response = HttpEasyRequest.get().tag(HttpSingleDownloader.this).url(url).build().execute();//请求
             save(response, rFile);//保存
         }catch (Exception e){
             if(rFile.exists()){
@@ -92,7 +92,7 @@ public class HttpSingleDownloader extends HttpDownloader {
         if(rFile.exists()){//存在则删除
             rFile.delete();
         }
-        HttpRequest.get().tag(HttpSingleDownloader.this).url(url).build().execute(new FileCallBack(folderPath, rName) {
+        HttpEasyRequest.get().tag(HttpSingleDownloader.this).url(url).build().execute(new FileCallBack(folderPath, rName) {
             @Override
             public void inProgress(float progress, long total, int id) {
                 if(callback != null) callback.exeProgress(total, (int)(progress * 100));

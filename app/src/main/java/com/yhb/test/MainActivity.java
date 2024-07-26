@@ -8,28 +8,22 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import com.yhb.httputils.HttpManager;
-import com.yhb.httputils.callback.HttpCacheCallback;
 import com.yhb.httputils.callback.HttpDefaultCallback;
 import com.yhb.httputils.download.HttpDownloadResult;
 import com.yhb.httputils.download.HttpDownloader;
 import com.yhb.httputils.download.group.HttpGroupDownloadRes;
 import com.yhb.httputils.download.group.HttpGroupDownloadResult;
 import com.yhb.httputils.download.group.HttpGroupDownloaderCallback;
-import com.yhb.httputils.download.multiple.HttpMultipleDownloaderCallback;
-import com.yhb.httputils.download.single.HttpSingleDownloaderCallback;
-import com.yhb.httputils.request.HttpRequest;
+import com.yhb.httputils.request.HttpEasyRequest;
 import com.yhb.ossutils.OssManager;
 import com.yhb.ossutils.upload.OssUploader;
 import com.yhb.ossutils.upload.OssUploaderResult;
 import com.yhb.ossutils.upload.multiple.OssMultipleUploaderCallback;
-import com.yhb.ossutils.upload.single.OssSingleUploaderCallback;
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -60,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.e(TAG, Thread.currentThread().getName() + "  " + Thread.currentThread().getId());
 
 //                try {
-//                    Response response = HttpRequest
+//                    Response response = HttpEasyRequest
 //                            .get()
 //                            .tag(TAG)
 //                            .url("https://pm.aiyi.tv:9010/ayqhl-operation/themeAuditDeviceRel/getThemeByDevice")
@@ -71,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
 //                    e.printStackTrace();
 //                }
 
-                HttpRequest
+                HttpEasyRequest
                         .get()
                         .tag(TAG)
                         .url("https://pm.aiyi.tv:9010/ayqhl-operation/themeAuditDeviceRel/getThemeByDevice")
@@ -85,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
                             }
                         });
 
-//                HttpRequest
+//                HttpEasyRequest
 //                        .get()
 //                        .tag(TAG)
 //                        .url("https://pm.aiyi.tv:9010/ayqhl-operation/themeAuditDeviceRel/getThemeByDevice")
