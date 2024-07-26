@@ -41,7 +41,7 @@ public class MyDefaultOssConfig extends OssBaseConfig {
 
     @Override
     public String authServerUrl() {
-        return "https://pm.aiyi.tv:9010/ayqhl-equipment/device/getSTSToken";
+        return "";
     }
 
     @Override
