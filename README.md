@@ -24,11 +24,11 @@ Http请求、文件下载、OSS上传工具
 ```java
   dependencies {
     ... ...
-    implementation 'com.github.YeHaobo.EasyHttp:httputils:1.0'//httputils
+    implementation 'com.github.YeHaobo.EasyHttp:httputils:1.1'//httputils
     implementation 'com.squareup.okhttp3:okhttp:3.10.0'//OkHttp3
     implementation 'com.zhy:okhttputils:2.6.2'//OkHttp3Utils
 
-    implementation 'com.github.YeHaobo.EasyHttp:ossutils:1.0'//ossutils
+    implementation 'com.github.YeHaobo.EasyHttp:ossutils:1.1'//ossutils
     implementation 'com.aliyun.dpa:oss-android-sdk:2.9.13'//阿里云OSS
 
     implementation 'com.alibaba:fastjson:1.2.56'//fastjson
@@ -76,10 +76,6 @@ public class MyDefaultConfig extends HttpDefaultConfig {
 ```java
 public class MyDefaultOssConfig extends OssBaseConfig {
 
-    private SimpleDateFormat format;
-
-    public MyDefaultOssConfig() { this.format = new SimpleDateFormat("yyyyMM", Locale.getDefault());}
-
     @Override
     public int socketTimeout() {return 15 * 1000;}
 
@@ -114,19 +110,6 @@ public class MyDefaultOssConfig extends OssBaseConfig {
     @Override
     public String cachePath() {return Environment.getExternalStorageDirectory().getPath() + "/test/upload";}
 
-    /**获取mac地址*/
-    public static String mac() {
-        String mac = "";
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader("sys/class/net/eth0/address"));
-            mac = reader.readLine();
-            reader.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return mac.trim();
-    }
-
 }
 ```
 （2）在当前项目的 application 中初始化
@@ -139,7 +122,7 @@ public class MyDefaultOssConfig extends OssBaseConfig {
 （1）不缓存
 ```java
         try {
-            Response response = HttpRequest.get().tag(TAG).url("...").params(map).build().execute();
+            Response response = HttpEasyRequest.get().tag(TAG).url("...").params(map).build().execute();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -148,9 +131,7 @@ public class MyDefaultOssConfig extends OssBaseConfig {
 #### 异步请求
 （1）不缓存
 ```java
-        Map<String, String> map = new HashMap<>();
-        map.put("mac", MyDefaultOssConfig.mac());
-        HttpRequest
+        HttpEasyRequest
                 .get()
                 .tag(TAG)
                 .url("...")
@@ -166,9 +147,7 @@ public class MyDefaultOssConfig extends OssBaseConfig {
 ```
 （2）缓存
 ```java
-        Map<String, String> map = new HashMap<>();
-        map.put("mac", MyDefaultOssConfig.mac());
-        HttpRequest
+        HttpEasyRequest
                 .get()
                 .tag(TAG)
                 .url("...")
