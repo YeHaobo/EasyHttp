@@ -26,7 +26,7 @@ public class OssDefaultConfig implements OssConfig {
 
     @Override
     public String authServerUrl() {
-        return "";
+        return "***************************************************";
     }
 
     @Override

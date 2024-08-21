@@ -5,8 +5,10 @@ INJECTED from D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml:2:1-
 INJECTED from D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml:2:1-31:12
 INJECTED from D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml:2:1-31:12
 MERGED from [com.android.support:appcompat-v7:28.0.0] C:\Users\CompassUser\.gradle\caches\transforms-2\files-2.1\384c481b110fe6da039624c0bab7e154\appcompat-v7-28.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [:httputils] D:\MyWork\MyProject\EasyHttp\httputils\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-9:12
-MERGED from [:ossutils] D:\MyWork\MyProject\EasyHttp\ossutils\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-9:12
+MERGED from [:httputils] D:\MyWork\MyProject\EasyHttp\httputils\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-13:12
+MERGED from [:ossutils] D:\MyWork\MyProject\EasyHttp\ossutils\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-13:12
+MERGED from [com.zhy:okhttputils:2.6.2] C:\Users\CompassUser\.gradle\caches\transforms-2\files-2.1\74e9624b855d1a5fb95420a9dee1550c\okhttputils-2.6.2\AndroidManifest.xml:2:1-11:12
+MERGED from [com.aliyun.dpa:oss-android-sdk:2.9.13] C:\Users\CompassUser\.gradle\caches\transforms-2\files-2.1\9e7b58cc9efec8330883f88f3c9efba0\oss-android-sdk-2.9.13\AndroidManifest.xml:2:1-14:12
 MERGED from [com.android.support:support-fragment:28.0.0] C:\Users\CompassUser\.gradle\caches\transforms-2\files-2.1\0f566feefad3abd24c71fefb76ef4910\support-fragment-28.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:animated-vector-drawable:28.0.0] C:\Users\CompassUser\.gradle\caches\transforms-2\files-2.1\4e66b78da32f865e4cf2fd845c292fb3\animated-vector-drawable-28.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:support-core-ui:28.0.0] C:\Users\CompassUser\.gradle\caches\transforms-2\files-2.1\e1de021ab163aa5f9870b47239f7056e\support-core-ui-28.0.0\AndroidManifest.xml:17:1-22:12
@@ -51,6 +53,12 @@ INJECTED from D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml:2:1-
 		ADDED from D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml:2:11-69
 uses-permission#android.permission.INTERNET
 ADDED from D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml:5:5-66
+MERGED from [:httputils] D:\MyWork\MyProject\EasyHttp\httputils\build\intermediates\library_manifest\debug\AndroidManifest.xml:8:5-67
+MERGED from [:httputils] D:\MyWork\MyProject\EasyHttp\httputils\build\intermediates\library_manifest\debug\AndroidManifest.xml:8:5-67
+MERGED from [:ossutils] D:\MyWork\MyProject\EasyHttp\ossutils\build\intermediates\library_manifest\debug\AndroidManifest.xml:8:5-67
+MERGED from [:ossutils] D:\MyWork\MyProject\EasyHttp\ossutils\build\intermediates\library_manifest\debug\AndroidManifest.xml:8:5-67
+MERGED from [com.aliyun.dpa:oss-android-sdk:2.9.13] C:\Users\CompassUser\.gradle\caches\transforms-2\files-2.1\9e7b58cc9efec8330883f88f3c9efba0\oss-android-sdk-2.9.13\AndroidManifest.xml:11:5-67
+MERGED from [com.aliyun.dpa:oss-android-sdk:2.9.13] C:\Users\CompassUser\.gradle\caches\transforms-2\files-2.1\9e7b58cc9efec8330883f88f3c9efba0\oss-android-sdk-2.9.13\AndroidManifest.xml:11:5-67
 	android:name
 		ADDED from D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml:5:22-64
 uses-permission#android.permission.ACCESS_NETWORK_STATE
@@ -71,14 +79,28 @@ ADDED from D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml:9:5-76
 		ADDED from D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml:9:22-73
 uses-permission#android.permission.READ_EXTERNAL_STORAGE
 ADDED from D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml:10:5-80
+MERGED from [:httputils] D:\MyWork\MyProject\EasyHttp\httputils\build\intermediates\library_manifest\debug\AndroidManifest.xml:9:5-80
+MERGED from [:httputils] D:\MyWork\MyProject\EasyHttp\httputils\build\intermediates\library_manifest\debug\AndroidManifest.xml:9:5-80
+MERGED from [:ossutils] D:\MyWork\MyProject\EasyHttp\ossutils\build\intermediates\library_manifest\debug\AndroidManifest.xml:9:5-80
+MERGED from [:ossutils] D:\MyWork\MyProject\EasyHttp\ossutils\build\intermediates\library_manifest\debug\AndroidManifest.xml:9:5-80
 	android:name
 		ADDED from D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml:10:22-77
 uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
 ADDED from D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml:11:5-81
+MERGED from [:httputils] D:\MyWork\MyProject\EasyHttp\httputils\build\intermediates\library_manifest\debug\AndroidManifest.xml:10:5-81
+MERGED from [:httputils] D:\MyWork\MyProject\EasyHttp\httputils\build\intermediates\library_manifest\debug\AndroidManifest.xml:10:5-81
+MERGED from [:ossutils] D:\MyWork\MyProject\EasyHttp\ossutils\build\intermediates\library_manifest\debug\AndroidManifest.xml:10:5-81
+MERGED from [:ossutils] D:\MyWork\MyProject\EasyHttp\ossutils\build\intermediates\library_manifest\debug\AndroidManifest.xml:10:5-81
+MERGED from [com.aliyun.dpa:oss-android-sdk:2.9.13] C:\Users\CompassUser\.gradle\caches\transforms-2\files-2.1\9e7b58cc9efec8330883f88f3c9efba0\oss-android-sdk-2.9.13\AndroidManifest.xml:12:5-81
+MERGED from [com.aliyun.dpa:oss-android-sdk:2.9.13] C:\Users\CompassUser\.gradle\caches\transforms-2\files-2.1\9e7b58cc9efec8330883f88f3c9efba0\oss-android-sdk-2.9.13\AndroidManifest.xml:12:5-81
 	android:name
 		ADDED from D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml:11:22-78
 uses-permission#android.permission.MANAGE_EXTERNAL_STORAGE
 ADDED from D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml:12:5-82
+MERGED from [:httputils] D:\MyWork\MyProject\EasyHttp\httputils\build\intermediates\library_manifest\debug\AndroidManifest.xml:11:5-82
+MERGED from [:httputils] D:\MyWork\MyProject\EasyHttp\httputils\build\intermediates\library_manifest\debug\AndroidManifest.xml:11:5-82
+MERGED from [:ossutils] D:\MyWork\MyProject\EasyHttp\ossutils\build\intermediates\library_manifest\debug\AndroidManifest.xml:11:5-82
+MERGED from [:ossutils] D:\MyWork\MyProject\EasyHttp\ossutils\build\intermediates\library_manifest\debug\AndroidManifest.xml:11:5-82
 	android:name
 		ADDED from D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml:12:22-79
 application
@@ -121,10 +143,14 @@ INJECTED from D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml
 INJECTED from D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml
 MERGED from [com.android.support:appcompat-v7:28.0.0] C:\Users\CompassUser\.gradle\caches\transforms-2\files-2.1\384c481b110fe6da039624c0bab7e154\appcompat-v7-28.0.0\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:appcompat-v7:28.0.0] C:\Users\CompassUser\.gradle\caches\transforms-2\files-2.1\384c481b110fe6da039624c0bab7e154\appcompat-v7-28.0.0\AndroidManifest.xml:20:5-44
-MERGED from [:httputils] D:\MyWork\MyProject\EasyHttp\httputils\build\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-7:41
-MERGED from [:httputils] D:\MyWork\MyProject\EasyHttp\httputils\build\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-7:41
-MERGED from [:ossutils] D:\MyWork\MyProject\EasyHttp\ossutils\build\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-7:41
-MERGED from [:ossutils] D:\MyWork\MyProject\EasyHttp\ossutils\build\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:httputils] D:\MyWork\MyProject\EasyHttp\httputils\build\intermediates\library_manifest\debug\AndroidManifest.xml:4:5-6:41
+MERGED from [:httputils] D:\MyWork\MyProject\EasyHttp\httputils\build\intermediates\library_manifest\debug\AndroidManifest.xml:4:5-6:41
+MERGED from [:ossutils] D:\MyWork\MyProject\EasyHttp\ossutils\build\intermediates\library_manifest\debug\AndroidManifest.xml:4:5-6:41
+MERGED from [:ossutils] D:\MyWork\MyProject\EasyHttp\ossutils\build\intermediates\library_manifest\debug\AndroidManifest.xml:4:5-6:41
+MERGED from [com.zhy:okhttputils:2.6.2] C:\Users\CompassUser\.gradle\caches\transforms-2\files-2.1\74e9624b855d1a5fb95420a9dee1550c\okhttputils-2.6.2\AndroidManifest.xml:7:5-9:41
+MERGED from [com.zhy:okhttputils:2.6.2] C:\Users\CompassUser\.gradle\caches\transforms-2\files-2.1\74e9624b855d1a5fb95420a9dee1550c\okhttputils-2.6.2\AndroidManifest.xml:7:5-9:41
+MERGED from [com.aliyun.dpa:oss-android-sdk:2.9.13] C:\Users\CompassUser\.gradle\caches\transforms-2\files-2.1\9e7b58cc9efec8330883f88f3c9efba0\oss-android-sdk-2.9.13\AndroidManifest.xml:7:5-9:41
+MERGED from [com.aliyun.dpa:oss-android-sdk:2.9.13] C:\Users\CompassUser\.gradle\caches\transforms-2\files-2.1\9e7b58cc9efec8330883f88f3c9efba0\oss-android-sdk-2.9.13\AndroidManifest.xml:7:5-9:41
 MERGED from [com.android.support:support-fragment:28.0.0] C:\Users\CompassUser\.gradle\caches\transforms-2\files-2.1\0f566feefad3abd24c71fefb76ef4910\support-fragment-28.0.0\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-fragment:28.0.0] C:\Users\CompassUser\.gradle\caches\transforms-2\files-2.1\0f566feefad3abd24c71fefb76ef4910\support-fragment-28.0.0\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:animated-vector-drawable:28.0.0] C:\Users\CompassUser\.gradle\caches\transforms-2\files-2.1\4e66b78da32f865e4cf2fd845c292fb3\animated-vector-drawable-28.0.0\AndroidManifest.xml:20:5-44

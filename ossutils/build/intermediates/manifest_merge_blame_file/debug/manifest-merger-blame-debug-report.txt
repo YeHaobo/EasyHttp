@@ -1,11 +1,23 @@
 1<?xml version="1.0" encoding="utf-8"?>
 2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-3    package="com.yhb.ossutils" >
-4
-5    <uses-sdk
-6        android:minSdkVersion="21"
+3    package="com.yhb.ossutils" > <!-- 允许访问所有文件 -->
+4    <uses-sdk
+5        android:minSdkVersion="21"
+5-->D:\MyWork\MyProject\EasyHttp\ossutils\src\main\AndroidManifest.xml
+6        android:targetSdkVersion="28" />
 6-->D:\MyWork\MyProject\EasyHttp\ossutils\src\main\AndroidManifest.xml
-7        android:targetSdkVersion="28" />
-7-->D:\MyWork\MyProject\EasyHttp\ossutils\src\main\AndroidManifest.xml
-8
-9</manifest>
+7
+8    <uses-permission android:name="android.permission.INTERNET" /> <!-- 允许应用访问网络连接 -->
+8-->D:\MyWork\MyProject\EasyHttp\ossutils\src\main\AndroidManifest.xml:3:5-66
+8-->D:\MyWork\MyProject\EasyHttp\ossutils\src\main\AndroidManifest.xml:3:22-64
+9    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- 允许应用读取扩展存储 -->
+9-->D:\MyWork\MyProject\EasyHttp\ossutils\src\main\AndroidManifest.xml:4:5-80
+9-->D:\MyWork\MyProject\EasyHttp\ossutils\src\main\AndroidManifest.xml:4:22-77
+10    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 允许应用写入扩展存储 -->
+10-->D:\MyWork\MyProject\EasyHttp\ossutils\src\main\AndroidManifest.xml:5:5-81
+10-->D:\MyWork\MyProject\EasyHttp\ossutils\src\main\AndroidManifest.xml:5:22-78
+11    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+11-->D:\MyWork\MyProject\EasyHttp\ossutils\src\main\AndroidManifest.xml:6:5-82
+11-->D:\MyWork\MyProject\EasyHttp\ossutils\src\main\AndroidManifest.xml:6:22-79
+12
+13</manifest>

@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import com.yhb.httputils.HttpManager;
+import com.yhb.httputils.callback.HttpCacheCallback;
 import com.yhb.httputils.callback.HttpDefaultCallback;
 import com.yhb.httputils.download.HttpDownloadResult;
 import com.yhb.httputils.download.HttpDownloader;
@@ -21,7 +22,9 @@ import com.yhb.ossutils.upload.OssUploaderResult;
 import com.yhb.ossutils.upload.multiple.OssMultipleUploaderCallback;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,13 +42,15 @@ public class MainActivity extends AppCompatActivity {
         handler = new Handler(handlerThread.getLooper());
         HttpManager.initialize(new MyBaseConfig());
         OssManager.initialize(getApplicationContext(), new OssDefaultConfig());
-        ossTest();
+        downloadTest();
     }
 
     private void requestTest(){
         handler.post(new Runnable() {
             @Override
             public void run() {
+                Map<String, String> map = new HashMap<>();
+                map.put("mac","8c:fc:a0:f4:76:07");
                 Log.e(TAG, Thread.currentThread().getName() + "  " + Thread.currentThread().getId());
 
 //                try {
@@ -60,18 +65,19 @@ public class MainActivity extends AppCompatActivity {
 //                    e.printStackTrace();
 //                }
 
-                HttpEasyRequest
-                        .get()
-                        .tag(TAG)
-                        .url("https://pm.aiyi.tv:9010/ayqhl-operation/themeAuditDeviceRel/getThemeByDevice")
-                        .build()
-                        .execute(new HttpDefaultCallback<String>(Looper.getMainLooper(), String.class) {
-                            @Override
-                            public void callback(boolean result, String data, String msg) {
-                                Log.e(TAG, Thread.currentThread().getName() + "  " + Thread.currentThread().getId());
-                                Log.e(TAG, result + "\n" + data + "\n" + msg);
-                            }
-                        });
+//                HttpEasyRequest
+//                        .get()
+//                        .tag(TAG)
+//                        .url("https://pm.aiyi.tv:9010/ayqhl-operation/themeAuditDeviceRel/getThemeByDevice")
+//                        .params(map)
+//                        .build()
+//                        .execute(new HttpDefaultCallback<String>(Looper.myLooper(), String.class) {
+//                            @Override
+//                            public void callback(boolean result, String data, String msg) {
+//                                Log.e(TAG, Thread.currentThread().getName() + "  " + Thread.currentThread().getId());
+//                                Log.e(TAG, result + "\n" + data + "\n" + msg);
+//                            }
+//                        });
 
 //                HttpEasyRequest
 //                        .get()
@@ -79,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
 //                        .url("https://pm.aiyi.tv:9010/ayqhl-operation/themeAuditDeviceRel/getThemeByDevice")
 //                        .params(map)
 //                        .build()
-//                        .execute(new HttpCacheCallback<String>(Looper.getMainLooper(), String.class) {
+//                        .execute(new HttpCacheCallback<String>(String.class) {
 //                            @Override
 //                            public void callback(boolean result, String data, String requestMsg, String cacheMsg) {
 //                                Log.e(TAG, Thread.currentThread().getName() + "  " + Thread.currentThread().getId());
@@ -165,7 +171,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void inProgress(List<HttpGroupDownloadRes> groupResList, int pathIndex, int urlIndex, long total, int progress) {
                         if(pathIndex != in1 || urlIndex != in2){
-                            Log.e(TAG, "pro " + Thread.currentThread().getName() + "  " + Thread.currentThread().getId());
+                            Log.e(TAG, pathIndex + " "+urlIndex + "pro " + Thread.currentThread().getName() + "  " + Thread.currentThread().getId());
                             in1 = pathIndex;
                             in2 = urlIndex;
                         }
@@ -191,8 +197,8 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 List<File> fileList = new ArrayList<>();
                 fileList.add(new File(Environment.getExternalStorageDirectory().getPath() + "/test/11/111.png"));
-                fileList.add(new File(Environment.getExternalStorageDirectory().getPath() + "/test/11/222.jpg"));
-                fileList.add(new File(Environment.getExternalStorageDirectory().getPath() + "/test/11/333.jpg"));
+                fileList.add(new File(Environment.getExternalStorageDirectory().getPath() + "/test/11/222.png"));
+                fileList.add(new File(Environment.getExternalStorageDirectory().getPath() + "/test/11/333.png"));
 
                 Log.e(TAG, Thread.currentThread().getName() + "  " + Thread.currentThread().getId());
 
@@ -222,7 +228,7 @@ public class MainActivity extends AppCompatActivity {
 //                    Log.e(TAG, result.toString());
 //                }
 
-                OssUploader.createMultiple().async(new OssDefaultUploadConfig("12:23:45:56:78"), fileList, new OssMultipleUploaderCallback(Looper.getMainLooper()) {
+                OssUploader.createMultiple().async(new OssDefaultUploadConfig("8c:fc:a0:f4:76:07"), fileList, new OssMultipleUploaderCallback(Looper.getMainLooper()) {
                     int in = -1;
                     @Override
                     public void inProgress(List<File> fileList, int index, long total, int progress) {
