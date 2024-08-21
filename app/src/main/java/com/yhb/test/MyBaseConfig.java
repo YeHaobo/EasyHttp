@@ -1,12 +1,12 @@
 package com.yhb.test;
 
-import com.yhb.httputils.config.HttpDefaultConfig;
+import com.yhb.httputils.config.HttpBaseConfig;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MyDefaultConfig extends HttpDefaultConfig {
+public class MyBaseConfig extends HttpBaseConfig {
 
     /**TAG*/
     private static final String TAG = "MyDefaultConfig";

@@ -1,26 +1,23 @@
 package com.yhb.httputils;
 
+import com.yhb.httputils.config.HttpConfig;
 import com.yhb.httputils.config.HttpBaseConfig;
-import com.yhb.httputils.config.HttpDefaultConfig;
 import com.zhy.http.okhttp.OkHttpUtils;
 import okhttp3.OkHttpClient;
 
 /**http管理器*/
 public class HttpManager {
 
-    /**TAG*/
-    private static final String TAG = "HttpManager";
-
     /**配置信息实体*/
-    private static HttpBaseConfig httpConfig;
+    private static HttpConfig httpConfig;
 
     /**初始化*/
     public static void initialize(){
-        initialize(new HttpDefaultConfig());
+        initialize(new HttpBaseConfig());
     }
 
     /**初始化*/
-    public static void initialize(HttpBaseConfig config){
+    public static void initialize(HttpConfig config){
         httpConfig = config;
         OkHttpUtils.initClient(new OkHttpClient
                 .Builder()
@@ -31,7 +28,7 @@ public class HttpManager {
     }
 
     /**获取配置信息实体*/
-    public static HttpBaseConfig config(){
+    public static HttpConfig config(){
         return httpConfig;
     }
 

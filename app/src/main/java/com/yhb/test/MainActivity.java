@@ -21,9 +21,7 @@ import com.yhb.ossutils.upload.OssUploaderResult;
 import com.yhb.ossutils.upload.multiple.OssMultipleUploaderCallback;
 import java.io.File;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,8 +37,8 @@ public class MainActivity extends AppCompatActivity {
         HandlerThread handlerThread = new HandlerThread("yhb");
         handlerThread.start();
         handler = new Handler(handlerThread.getLooper());
-        HttpManager.initialize(new MyDefaultConfig());
-        OssManager.initialize(getApplicationContext(), new MyDefaultOssConfig());
+        HttpManager.initialize(new MyBaseConfig());
+        OssManager.initialize(getApplicationContext(), new OssDefaultConfig());
         ossTest();
     }
 
@@ -48,9 +46,6 @@ public class MainActivity extends AppCompatActivity {
         handler.post(new Runnable() {
             @Override
             public void run() {
-                Map<String, String> map = new HashMap<>();
-                map.put("mac", MyDefaultOssConfig.mac());
-
                 Log.e(TAG, Thread.currentThread().getName() + "  " + Thread.currentThread().getId());
 
 //                try {
@@ -69,7 +64,6 @@ public class MainActivity extends AppCompatActivity {
                         .get()
                         .tag(TAG)
                         .url("https://pm.aiyi.tv:9010/ayqhl-operation/themeAuditDeviceRel/getThemeByDevice")
-                        .params(map)
                         .build()
                         .execute(new HttpDefaultCallback<String>(Looper.getMainLooper(), String.class) {
                             @Override
@@ -228,7 +222,7 @@ public class MainActivity extends AppCompatActivity {
 //                    Log.e(TAG, result.toString());
 //                }
 
-                OssUploader.createMultiple().async(fileList, Looper.myLooper(), new OssMultipleUploaderCallback(Looper.getMainLooper()) {
+                OssUploader.createMultiple().async(new OssDefaultUploadConfig("12:23:45:56:78"), fileList, new OssMultipleUploaderCallback(Looper.getMainLooper()) {
                     int in = -1;
                     @Override
                     public void inProgress(List<File> fileList, int index, long total, int progress) {

@@ -12,11 +12,11 @@ public abstract class HttpSingleDownloaderCallback {
 
     /**构造*/
     public HttpSingleDownloaderCallback(){
-        this(Looper.myLooper());
+        this(null);
     }
     /**构造*/
     public HttpSingleDownloaderCallback(Looper looper){
-        this.handler = new Handler(looper);
+        this.handler = new Handler(looper != null ? looper : Looper.getMainLooper());
     }
 
     /**进度切换线程回调*/

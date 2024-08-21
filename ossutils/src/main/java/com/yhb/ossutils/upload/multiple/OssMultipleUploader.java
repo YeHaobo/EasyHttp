@@ -1,6 +1,6 @@
 package com.yhb.ossutils.upload.multiple;
 
-import android.os.Looper;
+import com.yhb.ossutils.config.OssUploadConfig;
 import com.yhb.ossutils.upload.OssUploaderResult;
 import com.yhb.ossutils.upload.single.OssSingleUploader;
 import com.yhb.ossutils.upload.single.OssSingleUploaderCallback;
@@ -15,30 +15,30 @@ import java.util.List;
 public class OssMultipleUploader extends OssSingleUploader {
 
     /**同步*/
-    public List<OssUploaderResult> sync(List<File> fileList){
-        return sync(fileList, 0, new ArrayList<OssUploaderResult>());
+    public List<OssUploaderResult> sync(OssUploadConfig config, List<File> fileList){
+        return sync(config, fileList, 0, new ArrayList<OssUploaderResult>());
     }
     /**同步*/
-    private List<OssUploaderResult> sync(List<File> fileList, int index, List<OssUploaderResult> resultList){
+    private List<OssUploaderResult> sync(OssUploadConfig config, List<File> fileList, int index, List<OssUploaderResult> resultList){
         if(fileList.size() <= index){
             return resultList;
         }
-        OssUploaderResult result = sync(fileList.get(index));
+        OssUploaderResult result = sync(config, fileList.get(index));
         resultList.add(result);
-        return sync(fileList, index + 1, resultList);
+        return sync(config, fileList, index + 1, resultList);
     }
 
     /**异步*/
-    public void async(List<File> fileList, Looper copyLooper, OssMultipleUploaderCallback callback){
-        async(fileList, 0, new ArrayList<OssUploaderResult>(), copyLooper, callback);
+    public void async(OssUploadConfig config, List<File> fileList, OssMultipleUploaderCallback callback){
+        async(config, fileList, 0, new ArrayList<OssUploaderResult>(), callback);
     }
     /**异步*/
-    private void async(final List<File> fileList, final int index, final List<OssUploaderResult> resultList, final Looper copyLooper, final OssMultipleUploaderCallback callback){
+    private void async(final OssUploadConfig config, final List<File> fileList, final int index, final List<OssUploaderResult> resultList, final OssMultipleUploaderCallback callback){
         if(fileList.size() <= index){
             callback.onCallback(resultList);
             return;
         }
-        async(fileList.get(index), copyLooper, new OssSingleUploaderCallback(callback.looper()) {
+        async(config, fileList.get(index), new OssSingleUploaderCallback(callback.looper()) {
             @Override
             public void onCancle() {
                 callback.onCancle();
@@ -50,7 +50,7 @@ public class OssMultipleUploader extends OssSingleUploader {
             @Override
             public void onCallback(OssUploaderResult result) {
                 resultList.add(result);
-                async(fileList, index + 1, resultList, copyLooper, callback);
+                async(config, fileList, index + 1, resultList, callback);
             }
         });
     }

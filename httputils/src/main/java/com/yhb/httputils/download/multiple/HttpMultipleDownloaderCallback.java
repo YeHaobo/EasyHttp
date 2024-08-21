@@ -12,11 +12,11 @@ public abstract class HttpMultipleDownloaderCallback {
 
     /**构造*/
     public HttpMultipleDownloaderCallback(){
-        this(Looper.myLooper());
+        this(null);
     }
     /**构造*/
     public HttpMultipleDownloaderCallback(Looper looper){
-        this.looper = looper;
+        this.looper = looper != null ? looper : Looper.getMainLooper();
     }
 
     /**回调线程*/

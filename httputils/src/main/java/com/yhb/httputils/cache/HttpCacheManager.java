@@ -4,16 +4,13 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import com.alibaba.fastjson.JSONObject;
 import com.yhb.httputils.HttpManager;
-import com.yhb.httputils.config.HttpBaseConfig;
+import com.yhb.httputils.config.HttpConfig;
 import java.io.File;
 import java.io.RandomAccessFile;
 import okhttp3.Request;
 
 /**缓存文件管理器*/
 public class HttpCacheManager {
-
-    /**TAG*/
-    private static final String TAG = "HttpCacheManager";
 
     /**单例模式*/
     private static HttpCacheManager instance;
@@ -29,7 +26,7 @@ public class HttpCacheManager {
     }
 
     /**缓存读写消息线程名*/
-    private static final String HANDLER_NAME = "http_cache";
+    private static final String HANDLER_NAME = "httpCache";
     /**缓存读写消息handler*/
     private Handler handler;
 
@@ -42,7 +39,7 @@ public class HttpCacheManager {
 
     /**缓存文件获取*/
     private File cacheFile(Request request){
-        HttpBaseConfig config = HttpManager.config();
+        HttpConfig config = HttpManager.config();
         File folder = new File(config.cachePath());
         if(!folder.exists()){
             folder.mkdirs();

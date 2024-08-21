@@ -1,11 +1,17 @@
 package com.yhb.httputils.download;
 
+import android.util.Log;
 import com.alibaba.fastjson.JSONObject;
-import com.yhb.httputils.HttpManager;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.security.MessageDigest;
 
 /**下载回调实体*/
 public class HttpDownloadResult {
+    /**TAG*/
+    private static final String TAG = "HttpDownloadResult";
+
     /**是否成功*/
     private boolean result;
     /**信息*/
@@ -29,7 +35,7 @@ public class HttpDownloadResult {
         this.url = url;
         this.name = result ? file.getName() : "";
         this.size = result ? file.length() : 0;
-        this.md5 = result ? HttpManager.config().md5(file) : "";
+        this.md5 = result ? md5(file) : "";
     }
 
     public boolean isResult() {
@@ -81,6 +87,32 @@ public class HttpDownloadResult {
         this.md5 = md5;
     }
 
+    /**MD5值转换*/
+    public String md5(File file) {
+        if (file == null || !file.exists() || !file.isFile()) return "";
+        try {
+            MessageDigest md5 = MessageDigest.getInstance("MD5");
+            InputStream is = new FileInputStream(file);
+            byte[] buffer = new byte[1024];
+            int readBytes = 0;
+            while ((readBytes = is.read(buffer)) != -1) {
+                md5.update(buffer, 0, readBytes);
+            }
+            is.close();
+            byte[] digest = md5.digest();
+            StringBuilder sb = new StringBuilder();
+            for (byte b : digest) {
+                sb.append(String.format("%02x", b));
+            }
+            return sb.toString();
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.e(TAG, "md5 error: " + e.getMessage());
+            return "";
+        }
+    }
+
+    /**转json*/
     public String toString(){
         return JSONObject.toJSONString(this);
     }

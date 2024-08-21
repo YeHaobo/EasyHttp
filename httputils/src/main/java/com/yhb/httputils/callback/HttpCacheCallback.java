@@ -18,9 +18,6 @@ import okhttp3.Response;
  */
 public abstract class HttpCacheCallback<T> extends Callback<T> {
 
-    /**TAG*/
-    private static final String TAG = "HttpCacheCallback";
-
     /**请求回调*/
     public abstract void callback(boolean result, T data, String requestMsg, String cacheMsg);
 
@@ -31,15 +28,15 @@ public abstract class HttpCacheCallback<T> extends Callback<T> {
     /**请求*/
     private Request request;
 
-    /**构造（默认回调主线程）*/
+    /**构造*/
     public HttpCacheCallback(Class<T> clz){
-        this(Looper.myLooper(), clz);
+        this(null, clz);
     }
 
     /**构造（指定线程回调，当前线程looper不存在时使用主线程回调）*/
     public HttpCacheCallback(Looper looper, Class<T> clz){
         this.clz = clz;
-        this.handler = new Handler(looper);
+        this.handler = new Handler(looper != null ? looper : Looper.getMainLooper());
     }
 
     /**数据解析（异常后回调至onError，成功则回调onResponse）*/

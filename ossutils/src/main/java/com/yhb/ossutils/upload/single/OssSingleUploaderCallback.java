@@ -12,11 +12,11 @@ public abstract class OssSingleUploaderCallback {
 
     /**构造*/
     public OssSingleUploaderCallback(){
-        this(Looper.myLooper());
+        this(null);
     }
     /**构造*/
     public OssSingleUploaderCallback(Looper looper){
-        this.handler = new Handler(looper);
+        this.handler = new Handler(looper != null ? looper : Looper.getMainLooper());
     }
 
     /**切换线程回调进度*/

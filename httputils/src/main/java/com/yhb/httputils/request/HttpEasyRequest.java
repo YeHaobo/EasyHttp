@@ -8,7 +8,7 @@ import com.zhy.http.okhttp.builder.PostFileBuilder;
 import com.zhy.http.okhttp.builder.PostFormBuilder;
 import com.zhy.http.okhttp.builder.PostStringBuilder;
 
-/**http请求*/
+/**http请求基类*/
 public class HttpEasyRequest {
 
     /**get*/
