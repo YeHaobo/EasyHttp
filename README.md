@@ -24,11 +24,11 @@ Http请求、文件下载、OSS上传工具
 ```java
   dependencies {
     ... ...
-    implementation 'com.github.YeHaobo.EasyHttp:httputils:1.1'//httputils
+    implementation 'com.github.YeHaobo.EasyHttp:httputils:1.2'//httputils
     implementation 'com.squareup.okhttp3:okhttp:3.10.0'//OkHttp3
     implementation 'com.zhy:okhttputils:2.6.2'//OkHttp3Utils
 
-    implementation 'com.github.YeHaobo.EasyHttp:ossutils:1.1'//ossutils
+    implementation 'com.github.YeHaobo.EasyHttp:ossutils:1.2'//ossutils
     implementation 'com.aliyun.dpa:oss-android-sdk:2.9.13'//阿里云OSS
 
     implementation 'com.alibaba:fastjson:1.2.56'//fastjson
@@ -47,9 +47,9 @@ Http请求、文件下载、OSS上传工具
 
 ### 初始化
 #### 1、httputils
-（1）新建配置文件继承自HttpDefaultConfig，并按需重写方法
+（1）新建配置文件继承自MyBaseConfig，并按需重写方法
 ```java
-public class MyDefaultConfig extends HttpDefaultConfig {
+public class MyBaseConfig extends HttpBaseConfig {
 
     /**TAG*/
     private static final String TAG = "MyDefaultConfig";
@@ -66,55 +66,52 @@ public class MyDefaultConfig extends HttpDefaultConfig {
     }
 
 }
+
 ```
 （2）在当前项目的 application 中初始化
 ```java
-        HttpManager.initialize(new MyDefaultConfig());
+        HttpManager.initialize(new MyBaseConfig());
 ```
 #### 2、ossutils.
-（1）新建配置文件继承并实现OssBaseConfig
+（1）新建配置文件OssDefaultConfig实现OssConfig基础配置
 ```java
-public class MyDefaultOssConfig extends OssBaseConfig {
+public class OssDefaultConfig implements OssConfig {
 
     @Override
-    public int socketTimeout() {return 15 * 1000;}
-
-    @Override
-    public int connectionTimeout() {return 15 * 1000; }
-
-    @Override
-    public int maxErrorRetry() { return 2; }
-
-    @Override
-    public int maxConcurrentRequest() {return 5;}
-
-    @Override
-    public String authServerUrl() {return "";}//鉴权地址
-
-    @Override
-    public String point() {return "https://ayqhl-cloud.oss-cn-hangzhou.aliyuncs.com";}
-
-    @Override
-    public String endPoint() {return "https://oss-cn-hangzhou.aliyuncs.com";}
-
-    @Override
-    public String bucketName() {return "ayqhl-cloud";}
-
-    @Override
-    public String objectKey(File file) {
-        String postfix = file.getName().substring(file.getName().lastIndexOf("."));
-        String uuid = UUID.randomUUID().toString();
-        return "prod/device/" + mac() + "/" + format.format(new Date(System.currentTimeMillis())) + "/" + uuid + postfix;
+    public int socketTimeout() {
+        return 15 * 1000;
     }
 
     @Override
-    public String cachePath() {return Environment.getExternalStorageDirectory().getPath() + "/test/upload";}
+    public int connectionTimeout() {
+        return 15 * 1000;
+    }
+
+    @Override
+    public int maxErrorRetry() {
+        return 2;
+    }
+
+    @Override
+    public int maxConcurrentRequest() {
+        return 5;
+    }
+
+    @Override
+    public String authServerUrl() {
+        return "***************************************************";
+    }
+
+    @Override
+    public String endPoint() {
+        return "https://oss-cn-hangzhou.aliyuncs.com";
+    }
 
 }
 ```
 （2）在当前项目的 application 中初始化
 ```java
-        OssManager.initialize(getApplicationContext(), new MyDefaultOssConfig());
+        OssManager.initialize(getApplicationContext(), new OssDefaultConfig());
 ```
 
 ### 请求
@@ -161,7 +158,7 @@ public class MyDefaultOssConfig extends OssBaseConfig {
                     }
                 });
 ```
-_HttpDefaultCallback、HttpCacheCallback构造可传入Looper来指定回调线程，默认使用当前线程回调_  
+_HttpDefaultCallback、HttpCacheCallback构造可传入Looper来指定回调线程，默认使用主线程回调_  
 
 #### 取消请求
 ```java
@@ -245,7 +242,7 @@ _HttpDefaultCallback、HttpCacheCallback构造可传入Looper来指定回调线�
           }
       });
 ```
-_HttpSingleDownloaderCallback、HttpMultipleDownloaderCallback、HttpGroupDownloaderCallback构造可传入Looper来指定回调线程，默认使用当前线程回调_  
+_HttpSingleDownloaderCallback、HttpMultipleDownloaderCallback、HttpGroupDownloaderCallback构造可传入Looper来指定回调线程，默认使用主线程回调_  
 #### 取消下载
 ```java
   httpSingleDownloader.cancel();
@@ -253,14 +250,47 @@ _HttpSingleDownloaderCallback、HttpMultipleDownloaderCallback、HttpGroupDownlo
   httpGroupDownloader.cancel();
 ```
 ### 上传
+#### 上传配置
+（1）创建OssDefaultUploadConfig实现OssUploadConfig上传配置接口
+```java
+public class OssDefaultUploadConfig implements OssUploadConfig {
+
+    private SimpleDateFormat format;
+    private String mac;
+
+    public OssDefaultUploadConfig(String mac) {
+        this.mac = mac;
+        this.format = new SimpleDateFormat("yyyyMM", Locale.getDefault());
+    }
+
+    @Override
+    public String point() {
+        return "https://ayqhl-cloud.oss-cn-hangzhou.aliyuncs.com";
+    }
+
+
+    @Override
+    public String bucketName() {
+        return "ayqhl-cloud";
+    }
+
+    @Override
+    public String objectKey(File file) {
+        String postfix = file.getName().substring(file.getName().lastIndexOf("."));
+        String uuid = UUID.randomUUID().toString();
+        return "prod/device/" + mac + "/" + format.format(new Date(System.currentTimeMillis())) + "/" + uuid + postfix;
+    }
+
+}
+```
 #### 单文件上传
 （1）同步
 ```java
-      OssUploaderResult result = OssUploader.createSingle().sync(fileList.get(0));
+      OssUploaderResult result = OssUploader.createSingle().sync(new OssDefaultUploadConfig("8c:fc:a0:f4:76:07"), fileList.get(0));
 ```
 （2）异步
 ```java
-      OssUploader.createSingle().async(fileList.get(0), Looper.myLooper(), new OssSingleUploaderCallback(Looper.getMainLooper()) {
+      OssUploader.createSingle().async(new OssDefaultUploadConfig("8c:fc:a0:f4:76:07"), fileList.get(0), new OssSingleUploaderCallback(Looper.getMainLooper()) {
           boolean in = false;
           @Override
           public void inProgress(long total, int progress) {
@@ -279,11 +309,11 @@ _HttpSingleDownloaderCallback、HttpMultipleDownloaderCallback、HttpGroupDownlo
 #### 多文件上传  
 （1）同步
 ```java
-      List<OssUploaderResult> resultList = OssUploader.createMultiple().sync(fileList);
+      List<OssUploaderResult> resultList = OssUploader.createMultiple().sync(new OssDefaultUploadConfig("8c:fc:a0:f4:76:07"), fileList);
 ```
 （2）异步
 ```java
-      OssUploader.createMultiple().async(fileList, Looper.myLooper(), new OssMultipleUploaderCallback(Looper.getMainLooper()) {
+      OssUploader.createMultiple().async(new OssDefaultUploadConfig("8c:fc:a0:f4:76:07"), fileList, new OssMultipleUploaderCallback(Looper.getMainLooper()) {
           int in = -1;
           @Override
           public void inProgress(List<File> fileList, int index, long total, int progress) {
@@ -301,8 +331,7 @@ _HttpSingleDownloaderCallback、HttpMultipleDownloaderCallback、HttpGroupDownlo
           }
       });
 ```
-_OssSingleUploaderCallback、OssMultipleUploaderCallback构造可传入Looper来指定回调线程，默认使用当前线程回调_  
-_上传文件前需要拷贝一次文件，防止文件在上传时发生变更，故异步时需要拷贝文件的线程looper_  
+_OssSingleUploaderCallback、OssMultipleUploaderCallback构造可传入Looper来指定回调线程，默认使用主线程回调_  
 #### 取消上传
 ```java
   ossSingleUploader.cancel();
