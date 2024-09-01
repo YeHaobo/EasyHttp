@@ -59,6 +59,7 @@ public class HttpSingleDownloader extends HttpDownloader {
         }
         try{
             Response response = HttpEasyRequest.get().tag(HttpSingleDownloader.this).url(url).build().execute();//请求
+            if(!response.isSuccessful()) throw new Exception(response.message());//失败
             save(response, rFile);//保存
         }catch (Exception e){
             if(rFile.exists()){
