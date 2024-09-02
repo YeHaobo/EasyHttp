@@ -14,7 +14,7 @@ import com.yhb.ossutils.upload.OssUploaderResult;
 import java.io.File;
 
 /**
- * OSS单文件上传器
+ * OSS单文件上传器（OSS相同文件会覆盖）
  * https://ayqhl-cloud.oss-cn-hangzhou.aliyuncs.com/prod/device/8c:fc:a0:26:3a:f0/202307/f53124c0-1833-4fdb-a7ed-4ea4fec0fecf.png
  */
 public class OssSingleUploader extends OssUploader {
@@ -28,12 +28,15 @@ public class OssSingleUploader extends OssUploader {
         PutObjectRequest putRequest = new PutObjectRequest(config.bucketName(), objectKey, file.getPath());//构造请求
         putRequest.setCRC64(OSSRequest.CRC64Config.YES);//开启数据传输的完整性验证
         try{
-            OssManager.client().putObject(putRequest);
+            PutObjectResult result = OssManager.client().putObject(putRequest);
+            int code = result.getStatusCode();
+            boolean isSuccessful = code >= 200 && code < 300;
+            if(!isSuccessful) throw new Exception(code + " failed");
+            return new OssUploaderResult(config.point() + "/" + objectKey, file, code + " OK");
         }catch (Exception e){
             e.printStackTrace();
             return new OssUploaderResult(null, file, e.getMessage());
         }
-        return new OssUploaderResult(config.point() + "/" + objectKey, file, "file is uploaded");
     }
 
     /**异步*/

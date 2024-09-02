@@ -59,17 +59,15 @@ public class HttpSingleDownloader extends HttpDownloader {
         }
         try{
             Response response = HttpEasyRequest.get().tag(HttpSingleDownloader.this).url(url).build().execute();//请求
-            if(!response.isSuccessful()) throw new Exception(response.message());//失败
+            if(!response.isSuccessful()) throw new Exception(response.code() + " " + response.message());//下载失败
             save(response, rFile);//保存
+            if(file.exists()) file.delete();//下载文件存在则删除
+            rFile.renameTo(file);//预下载重命名为下载文件
+            return new HttpDownloadResult(file, url, response.code() + " " + response.message());
         }catch (Exception e){
-            if(rFile.exists()){
-                rFile.delete();
-            }
+            if(rFile.exists()) rFile.delete();
             return new HttpDownloadResult(null, url, e.getMessage());
         }
-        if(file.exists()) file.delete();//下载文件存在则删除
-        rFile.renameTo(file);//预下载重命名为下载文件
-        return new HttpDownloadResult(file, url, "file is downloaded");
     }
 
     /**异步*/

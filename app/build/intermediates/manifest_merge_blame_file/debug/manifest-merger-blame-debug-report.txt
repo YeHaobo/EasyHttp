@@ -51,22 +51,23 @@
 27-->D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml:18:9-54
 28        android:supportsRtl="true"
 28-->D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml:19:9-35
-29        android:theme="@style/AppTheme" >
-29-->D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml:20:9-40
-30        <activity android:name="com.yhb.test.MainActivity" >
-30-->D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml:22:9-27:20
-30-->D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml:22:19-47
-31            <intent-filter>
-31-->D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml:23:13-26:29
-32                <action android:name="android.intent.action.MAIN" />
-32-->D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml:24:17-69
-32-->D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml:24:25-66
-33
-34                <category android:name="android.intent.category.LAUNCHER" />
-34-->D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml:25:17-77
-34-->D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml:25:27-74
-35            </intent-filter>
-36        </activity>
-37    </application>
-38
-39</manifest>
+29        android:testOnly="true"
+30        android:theme="@style/AppTheme" >
+30-->D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml:20:9-40
+31        <activity android:name="com.yhb.test.MainActivity" >
+31-->D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml:22:9-27:20
+31-->D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml:22:19-47
+32            <intent-filter>
+32-->D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml:23:13-26:29
+33                <action android:name="android.intent.action.MAIN" />
+33-->D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml:24:17-69
+33-->D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml:24:25-66
+34
+35                <category android:name="android.intent.category.LAUNCHER" />
+35-->D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml:25:17-77
+35-->D:\MyWork\MyProject\EasyHttp\app\src\main\AndroidManifest.xml:25:27-74
+36            </intent-filter>
+37        </activity>
+38    </application>
+39
+40</manifest>
