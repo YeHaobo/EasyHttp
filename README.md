@@ -24,11 +24,11 @@ Http请求、文件下载、OSS上传工具
 ```java
   dependencies {
     ... ...
-    implementation 'com.github.YeHaobo.EasyHttp:httputils:1.5'//httputils
+    implementation 'com.github.YeHaobo.EasyHttp:httputils:1.6'//httputils
     implementation 'com.squareup.okhttp3:okhttp:3.10.0'//OkHttp3
     implementation 'com.zhy:okhttputils:2.6.2'//OkHttp3Utils
 
-    implementation 'com.github.YeHaobo.EasyHttp:ossutils:1.5'//ossutils
+    implementation 'com.github.YeHaobo.EasyHttp:ossutils:1.6'//ossutils
     implementation 'com.aliyun.dpa:oss-android-sdk:2.9.13'//阿里云OSS
 
     implementation 'com.alibaba:fastjson:1.2.56'//fastjson
