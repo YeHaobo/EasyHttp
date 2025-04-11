@@ -39,17 +39,22 @@ public abstract class HttpCacheCallback<T> extends Callback<T> {
         this.handler = new Handler(looper != null ? looper : Looper.getMainLooper());
     }
 
+    /**请求前回调*/
+    @Override
+    public void onBefore(Request request, int id) {
+        this.request = request;
+        super.onBefore(request, id);
+    }
+
     /**数据解析（异常后回调至onError，成功则回调onResponse）*/
     @Override
     public T parseNetworkResponse(Response response, int id) throws Exception {
-        request = response.request();//无网络不会进入此方法
         return HttpManager.config().parseResponse(response, clz);
     }
 
     /**错误回调（包括请求超时异常、数据解析异常）*/
     @Override
     public void onError(Call call, final Exception e, int id) {
-        request = call.request();//无网络时使用call内的request
         HttpCacheManager.getInstance().read(request, clz, new HttpCacheResult<T>() {
             @Override
             public void onResult(final boolean result, final T bean, final String msg) {

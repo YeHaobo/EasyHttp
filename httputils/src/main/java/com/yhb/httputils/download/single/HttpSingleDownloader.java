@@ -84,7 +84,7 @@ public class HttpSingleDownloader extends HttpDownloader {
         String rName = HttpManager.config().downloadingFileName(url);//预下载文件名
         final File file = new File(folderFile, name);//下载文件
         if(file.exists()){//已存在
-            if(callback != null) callback.exeCallback(new HttpDownloadResult(file, url, "file is exists"));
+            if(callback != null) callback.exeCallback(file, url, "file is exists");
             return;
         }
         final File rFile = new File(folderFile, rName);//预下载文件
@@ -94,18 +94,18 @@ public class HttpSingleDownloader extends HttpDownloader {
         HttpEasyRequest.get().tag(HttpSingleDownloader.this).url(url).build().execute(new FileCallBack(folderPath, rName) {
             @Override
             public void inProgress(float progress, long total, int id) {
-                if(callback != null) callback.exeProgress(total, (int)(progress * 100));
+                if(callback != null) callback.exeProgress(total, progress);
             }
             @Override
             public void onError(Call call, Exception e, int id) {
                 if(rFile.exists()) rFile.delete();
-                if(callback != null) callback.exeCallback(new HttpDownloadResult(null, url, e.getMessage()));
+                if(callback != null) callback.exeCallback(null, url, e.getMessage());
             }
             @Override
             public void onResponse(File response, int id) {
                 if(file.exists()) file.delete();
                 response.renameTo(file);
-                if(callback != null) callback.exeCallback(new HttpDownloadResult(file, url, "file is downloaded"));
+                if(callback != null) callback.exeCallback(file, url, "file is downloaded");
             }
         });
     }

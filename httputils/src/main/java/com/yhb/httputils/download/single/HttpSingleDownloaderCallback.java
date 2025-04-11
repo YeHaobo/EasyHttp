@@ -3,6 +3,7 @@ package com.yhb.httputils.download.single;
 import android.os.Handler;
 import android.os.Looper;
 import com.yhb.httputils.download.HttpDownloadResult;
+import java.io.File;
 
 /**单个文件下载回调*/
 public abstract class HttpSingleDownloaderCallback {
@@ -20,20 +21,20 @@ public abstract class HttpSingleDownloaderCallback {
     }
 
     /**进度切换线程回调*/
-    public void exeProgress(final long total, final int progress){
+    public void exeProgress(final long total, final float progress){
         handler.post(new Runnable() {
             @Override
             public void run() {
-                inProgress(total, progress);
+                inProgress(total, (int)(progress * 100));
             }
         });
     }
     /**结果切换线程回调*/
-    public void exeCallback(final HttpDownloadResult result){
+    public void exeCallback(final File file, final String url, final String msg){
         handler.post(new Runnable() {
             @Override
             public void run() {
-                onCallback(result);
+                onCallback(new HttpDownloadResult(file, url, msg));
             }
         });
     }
